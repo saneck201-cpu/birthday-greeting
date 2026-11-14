@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>С 18-летием!</title>
+  <meta name="description" content="Поздравление с 18-летием: 18 шариков с пожеланиями.">
+  <meta name="theme-color" content="#DCE4FF">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐰</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@600;800&display=swap&subset=cyrillic" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+
+    <header class="hero">
+      <button class="age" id="age" type="button" aria-label="Пошевелить ушками">
+        <!-- «18»: единица и восьмёрка нарисованы обводкой, у восьмёрки заячьи уши и мордочка -->
+        <svg viewBox="9 0 250 262" role="img" aria-hidden="true" focusable="false">
+          <g class="ear l">
+            <ellipse class="ear-out" cx="166" cy="78" rx="15" ry="42"/>
+            <ellipse class="ear-in" cx="166" cy="82" rx="7" ry="30"/>
+          </g>
+          <g class="ear r">
+            <ellipse class="ear-out" cx="194" cy="78" rx="15" ry="42"/>
+            <ellipse class="ear-in" cx="194" cy="82" rx="7" ry="30"/>
+          </g>
+          <path class="num" d="M82 108 V244 M82 108 L46 136"/>
+          <circle class="num" cx="180" cy="144" r="36"/>
+          <circle class="num" cx="180" cy="202" r="42"/>
+          <circle class="eye" cx="171" cy="141" r="4.2"/>
+          <circle class="eye" cx="189" cy="141" r="4.2"/>
+          <ellipse class="nose" cx="180" cy="150" rx="4.5" ry="3.2"/>
+        </svg>
+      </button>
+
+      <h1>С днём рождения, <span data-name>зайка</span>!</h1>
+      <p class="lead">Вот 18 шариков, по одному на каждый год. В каждом спрятано пожелание. Лопай по одному.</p>
+    </header>
+
+    <section class="game" aria-labelledby="game-title">
+      <h2 class="visually-hidden" id="game-title">Шарики с пожеланиями</h2>
+
+      <div class="status">
+        <p class="count">Лопнуто шариков: <strong id="count">0</strong> из 18</p>
+        <button class="quiet" id="sound" type="button" aria-pressed="true">Звук включён</button>
+      </div>
+      <div class="meter" id="meter" role="progressbar" aria-label="Лопнуто шариков" aria-valuemin="0" aria-valuemax="18" aria-valuenow="0">
+        <span class="meter-fill" id="meter-fill"></span>
+      </div>
+
+      <div class="wish" id="wish" role="status" aria-live="polite">
+        <p class="wish-text" id="wish-text">Нажми на любой шарик, и здесь появится первое пожелание.</p>
+      </div>
+
+      <div class="field" id="field">
+        <noscript><p>Чтобы лопать шарики, включи JavaScript в браузере.</p></noscript>
+      </div>
+    </section>
+
+    <section class="finale" id="finale" hidden aria-labelledby="finale-title">
+      <svg class="cake" id="cake" viewBox="0 0 200 190" aria-hidden="true" focusable="false">
+        <ellipse cx="100" cy="174" rx="88" ry="10" fill="#1B2468"/>
+        <rect x="28" y="104" width="144" height="66" rx="14" fill="#B5A0FF"/>
+        <rect x="28" y="104" width="144" height="24" rx="12" fill="#fff"/>
+        <circle cx="50" cy="126" r="9" fill="#fff"/>
+        <circle cx="84" cy="130" r="9" fill="#fff"/>
+        <circle cx="118" cy="127" r="9" fill="#fff"/>
+        <circle cx="150" cy="129" r="9" fill="#fff"/>
+        <circle cx="52" cy="152" r="5" fill="#FF7F72"/>
+        <circle cx="82" cy="154" r="5" fill="#FFD45E"/>
+        <circle cx="112" cy="152" r="5" fill="#6FDCB2"/>
+        <circle cx="142" cy="154" r="5" fill="#FF9CC8"/>
+        <rect x="93" y="62" width="14" height="44" rx="4" fill="#FF7F72"/>
+        <rect x="93" y="74" width="14" height="6" fill="#fff" opacity=".6"/>
+        <rect x="93" y="90" width="14" height="6" fill="#fff" opacity=".6"/>
+        <path d="M100 62 V55" stroke="#1B2468" stroke-width="2.5" stroke-linecap="round"/>
+        <g class="flame">
+          <path d="M100 22 C113 37 113 54 100 56 C87 54 87 37 100 22 Z" fill="#FFD45E"/>
+          <path d="M100 38 C106 46 106 54 100 55 C94 54 94 46 100 38 Z" fill="#FF7F72"/>
+        </g>
+        <path class="smoke" d="M100 52 C92 42 108 34 100 20"/>
+      </svg>
+
+      <h2 id="finale-title">Это были все 18 пожеланий</h2>
+      <p>Осталось главное: загадай своё и задуй свечу.</p>
+      <button class="btn" id="candle" type="button">Задуть свечу</button>
+      <p class="final-msg" id="final-msg" role="status" aria-live="polite" hidden></p>
+
+      <details class="all">
+        <summary>Перечитать все пожелания</summary>
+        <ol id="all-wishes"></ol>
+      </details>
+    </section>
+
+    <p class="foot">С любовью, <span data-sender>Саня</span></p>
+  </main>
+
+  <canvas id="confetti" aria-hidden="true"></canvas>
+  <script src="script.js"></script>
+</body>
+</html>
